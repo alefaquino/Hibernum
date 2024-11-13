@@ -1,0 +1,10 @@
+.no-scroll {
+  overflow: hidden;
+}
+
+@media (max-width: 767.98px) {
+  #cadastro-principal {
+    flex-direction: column;
+  }
+
+}

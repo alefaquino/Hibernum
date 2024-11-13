@@ -1,0 +1,39 @@
+.dadosPessoais{
+    height: 100vh;
+}
+
+.dadosPessoais::-webkit-scrollbar {
+    width: 10px;          
+  }
+  
+  .dadosPessoais::-webkit-scrollbar-track {
+    background: rgba(190, 190, 190, 0.671);    
+  }
+  
+  .dadosPessoais::-webkit-scrollbar-thumb {
+    background-color: var(--color-principal);
+    border-radius: 10px;
+  }
+  #buttonVoltarDadosPessoais{
+    display: flex;
+    width: 150px;
+    height: 50px;
+    border-radius: 8px;
+    align-items: center;
+    transition: all 400ms;
+    justify-content: center;
+    font-weight: bold;
+    color: rgb(92, 92, 92);
+    border: 0;
+  }
+
+  #form-dadosPessoais{
+   flex: 1;
+   display: flex;
+   align-items: center;
+   flex-direction: column;
+   justify-content: space-evenly;
+  }
+
+
+  

@@ -1,0 +1,77 @@
+#principal-anuncio{
+    overflow-y: auto;
+    height: 100vh;
+    width: 65%;
+    padding: 25px 30px;
+}
+
+#principal-anuncio::-webkit-scrollbar {
+    width: 10px;          
+  }
+  
+  #principal-anuncio::-webkit-scrollbar-track {
+    background: rgba(190, 190, 190, 0.671);    
+  }
+  
+  #principal-anuncio::-webkit-scrollbar-thumb {
+    background-color: var(--color-principal);
+    border-radius: 10px;
+  }
+
+#text-Principal{
+font-weight: bold;
+color: #0c6a96;
+}
+
+#caixa1{
+width:600px;
+height:200px;
+}
+
+#text2{
+    font-weight: bold;
+    color: #0c6a96;
+}
+
+
+.caixa-titulo{
+    font-weight: bold;     
+}
+
+#description{
+    resize: none;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+
+.primeiro{
+    color: #0c6a96;
+    font-weight: 700;
+    
+}
+#ServicosOferecidos{
+    border: 1px solid gray;
+    width: 100%;
+    height: 38px;
+    padding: 10px;
+    margin-bottom: 8px;
+}
+
+#label-picturesAd{
+    width: 200px;
+    height: 300px;
+    border: 2px solid #29A8E3;
+    border-radius: 10px;
+    background-color: #29a8e313;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 400ms;
+    color: var(--color-principal);
+    font-weight: 800;
+}
+
+#label-picturesAd:hover{
+    box-shadow: 0 0 4px rgba(122, 122, 122, 0.507);
+    background-color: #29a8e35e;
+}

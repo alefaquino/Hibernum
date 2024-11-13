@@ -1,0 +1,73 @@
+
+main{
+    height: 100vh;
+}
+
+#side-blue{
+    background-color: var(--color-principal);
+    width: 43%;
+    height: 100vh;
+}
+
+#email{
+    border: 1px solid gray;
+    width: 100%;
+    height: 38px;
+    padding: 10px;
+}
+#senha{
+    border: 1px solid gray;
+    width: 100%;
+    height: 38px;
+    padding: 10px;
+}
+
+.nomeMostrar{
+    cursor: pointer;
+}
+
+
+#form-login{
+    flex: 1;
+}
+
+form#forms-login{
+    width: 400px;
+}
+
+#esqueceu-senha a{
+    color: #1d1d1d;
+    text-decoration: underline;
+}
+
+#botao-login button{
+    border: 0;
+    width: 100%;
+    background-color: var(--color-principal);
+    height: 40px;
+    font-weight: 600;
+    font-size: 18px;
+    transition: all 400ms;
+}
+
+#botao-login button:hover{
+    filter:brightness(0.9);
+    box-shadow: 0 0 10px rgba(73, 73, 73, 0.39);
+}
+
+#cadastre-se-login{
+    color: var(--color-principal);
+    text-decoration: underline;
+}
+
+#bem-vindo-side-blue p{
+    font-size: 1.5rem;
+    font-weight: lighter;
+    line-height:28px;
+}
+
+@media (max-width: 576px) {
+    #side-blue{
+        display: none !important;
+    }
+}

@@ -1,0 +1,25 @@
+.button{
+    
+    display: flex;
+    width: 150px;
+    height: 50px;
+    border-radius: 8px;
+    align-items: center;
+    transition: all 400ms;
+    justify-content: center;
+}
+
+.next{
+    background-color: var(--color-principal);
+    color: white;
+}
+
+.next:hover{
+    filter: brightness(0.8);
+}
+
+
+.previous{
+    font-weight: bold;
+    color: rgb(92, 92, 92);
+}

@@ -1,0 +1,63 @@
+#select-tipo-cadastro{
+    height: 100%;
+    width: 100%;
+}
+
+.box-tipo-cadastro{
+    overflow: hidden !important;
+}
+
+.tipo-cadastro-label{
+    max-width: 700px;
+    max-height: 300px;
+    width: 500px;
+    height: 200px;
+    border-radius: 10px;
+    padding: 20px;
+    cursor: pointer;
+    transition: all 200ms;
+}
+
+#cliente:checked + label#cliente-checkbox{
+    background-color: #2704a438;
+    box-shadow: 2px 2px 10px rgba(141, 141, 141, 0.678);
+}
+
+#prestadorServico:checked + label#prestadorServico-checkbox{
+    background-color: #329cff60;
+    box-shadow: 2px 2px 10px rgba(141, 141, 141, 0.678);
+}
+
+#prestadorServico-checkbox{
+    border: 5px solid #329DFF;
+}
+
+#prestadorServico-checkbox h3{
+    color: #329DFF;
+    margin: 0;
+}
+
+#cliente-checkbox{
+    border: 5px solid #032c91;
+}
+#cliente-checkbox h3{
+    color: #082489;
+    margin: 0;
+}
+#buttonVoltarDadosPessoais{
+    display: flex;
+    width: 150px;
+    background-color: transparent !important;
+    height: 50px;
+    border-radius: 8px;
+    align-items: center;
+    transition: all 400ms;
+    justify-content: center;
+    font-weight: bold;
+    color: rgb(92, 92, 92);
+    border: 0;
+}
+.erro-tipo-cadastro {
+    color: red;
+    text-align: center;
+  }

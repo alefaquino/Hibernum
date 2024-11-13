@@ -1,0 +1,10 @@
+version: '3.7'
+
+services:
+  front-end:
+    container_name: front_end
+    image: nginx
+    volumes:
+      - ./dist:/var/www/site/html
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+    network_mode: "host"

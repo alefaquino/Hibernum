@@ -1,0 +1,81 @@
+#home-box {
+    height: 87.5vh;
+    overflow: hidden;
+}
+
+#categories-box {
+    border-right: 1px solid rgb(180, 180, 180);
+    height: 100%;
+    width: 20%;
+    padding-top: 30px;
+}
+
+#principal-box-home {
+    width: 80%;
+    padding: 30px 20px 0 30px;
+    overflow-y: auto;
+}
+
+#principal-box-home::-webkit-scrollbar {
+    width: 8px;
+    background-color: #F0F0F0;
+}
+
+#principal-box-home::-webkit-scrollbar-track {
+    background-color: rgba(224, 224, 224, 0.575);
+}
+
+#principal-box-home::-webkit-scrollbar-thumb {
+    background-color: #29A8E3;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+#principal-box-home:hover::-webkit-scrollbar-thumb {
+    background-color: #29A8E3;
+}
+
+#principal-box-home::-webkit-scrollbar-thumb {
+    background-color: transparent;
+}
+
+#pesquisar-box {
+    width: 100%;
+}
+
+#pesquisar-input {
+    width: 100%;
+    height: 60px;
+    padding: 0 45px;
+    border: 1px solid gray;
+    border-radius: 10px 0 0 10px;
+    background: url('/lupa.svg') center left 10px no-repeat;
+    background-size: 23px;
+    background-color: white;
+}
+
+#pesquisar-button {
+    border-radius: 0 10px 10px 0;
+    width: 200px;
+    border: 0;
+    background-color: var(--color-principal);
+    color: white;
+    font-weight: 600;
+    font-size: 18px;
+    transition: all 400ms;
+}
+
+#pesquisar-button:hover {
+    filter: brightness(0.9);
+    box-shadow: 3px 3px 5px rgba(165, 165, 165, 0.315);
+}
+
+@media (max-width: 767.98px) {
+    #categories-box{
+        display: none;
+    }
+
+    #principal-box-home{
+        width: 100%;
+    }
+}

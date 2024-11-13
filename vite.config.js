@@ -1,7 +1,7 @@
-import { defineConfig } from 'vite';
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
 
+// https://vitejs.dev/config/
 export default defineConfig({
-  build: {
-    outDir: 'dist' // Altere "public" para o nome da pasta desejada
-  }
-});
+  plugins: [react()],
+})

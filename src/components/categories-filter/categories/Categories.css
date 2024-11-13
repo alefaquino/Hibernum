@@ -1,0 +1,13 @@
+.categorias{
+    background-color: #0C6A96;
+    display: flex;
+    flex-direction: column;
+    padding: 10px 17px; 
+    color: white;
+    border-radius: 10px;
+    font-weight: bold;
+    align-items: start;
+    width: 200px;
+    margin-top: 20px;
+    height: 290px;
+}

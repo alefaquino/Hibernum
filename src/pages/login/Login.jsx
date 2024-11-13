@@ -1,92 +1,141 @@
-import React, { useState } from 'react';
-import './Login.scss';
-import { motion } from 'framer-motion';
-import Form from 'react-bootstrap/Form';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { useState, useEffect, useContext } from 'react'
+import Input from '../../components/input/Input'
+import './login.css'
+import { Link } from 'react-router-dom/cjs/react-router-dom'
+import { motion } from 'framer-motion'
+import { useForm } from "react-hook-form"
+import { yupResolver } from "@hookform/resolvers/yup"
+import { useHistory } from "react-router-dom"
+import { NavLink } from 'react-router-dom/cjs/react-router-dom.min'
+import * as yup from "yup"
 
-const Login = () => {
-   /* const navigate = useNavigate();
-    const [cpf_paciente, setCpf] = useState('');
-    const [senha_paciente, setSenhaPaciente] = useState('');
-    const [error, setError] = useState('');
+import { Context } from "../../../context/userContext"
 
-    const handleLogin = async (e) => {
-        e.preventDefault();
+const validationSchema = yup.object().shape({
+  email: yup.string().email("Digite um email válido").required("Campo obrigatório."),
+  password: yup.string().required("Campo obrigatório.")
+})
 
-        if (!cpf_paciente || !senha_paciente) {
-            setError('Por favor, preencha ambos os campos.');
-            return;
-        }
 
-        try {
-            const response = await axios.post('http://127.0.0.1:3002/auth', {
-                cpf_paciente,
-                senha_paciente
-            });
+function Login() {
+  const { login } = useContext(Context)
+  const [error, setError] = useState('')
+  
+  const history = useHistory()
 
-            // Verifica se a resposta contém o token
-            if (response.status === 200) {
-                const data = response.data;
 
-                if (data.token) {
-                    localStorage.setItem('token', data.token);
-                    localStorage.setItem('name', data.nm_paciente);
-                    navigate('/home', { state: { userName: data.nm_paciente } });
-                } else {
-                    setError('Erro: Nome do paciente não encontrado.');
-                }
-            } else {
-                setError('Erro ao realizar login.');
-            }
-        } catch (error) {
-            console.error('Erro ao fazer login:', error);
-            setError('Erro ao conectar ao servidor.');
-        }
-    }*/
+  const { handleSubmit, control, formState: { errors } } = useForm({
+    resolver: yupResolver(validationSchema)
+  });
 
-    return (
-        <motion.div className="login"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.4 }}
-        >
-            <div className="box_background"></div>
-            <div className="box_form">
-                <img src="./logo-orig.png" width={200}  />
-                <Form className="box_form_form" >
-                    <Form.Group className="mb-3" controlId="cpfInput">
-                        <Form.Label>CPF</Form.Label>
-                        <Form.Control
-                            type="text"
-                            /*value={cpf_paciente}
-                            onChange={(e) => setCpf(e.target.value)} */
-                            placeholder="Digite seu CPF"
-                        />
-                    </Form.Group>
-                    <Form.Group className="mb-3" controlId="senhaInput">
-                        <Form.Label>Senha</Form.Label>
-                        <Form.Control
-                            type="password"
-                            /*value={senha_paciente}
-                            onChange={(e) => setSenhaPaciente(e.target.value)}*/
-                            placeholder="Digite sua senha"
-                        />
-                    </Form.Group>
-                    
-                    <button className="box_form_form_button w-100" type="submit"  to="/home">
-                    <NavLink to="/home" className="text-blue-500">Entrar</NavLink>
-                    </button>
- 
-                </Form>
-                <div>
-                    <NavLink to="/cadastro" className="text-blue-500">Cadastre-se</NavLink>
-                    </div>
-               
+  const handleLogin = async (data) => {
+    try {
+      await login(data, history);
+    } catch (error) {
+      const errorMessage = error.message.replace('Error: ', '')
+      document.getElementById('showErro').innerHTML = errorMessage
+      setTimeout(() => {
+        document.getElementById('showErro').innerHTML = ''
+      }, 5000);
+      setError(error)
+    }
+  }
+
+
+  function Mostrarsenha() {
+    var caixaSenha = document.getElementById("senha")
+    if (caixaSenha.type === "password") {
+      caixaSenha.type = "text"
+    } else {
+      caixaSenha.type = "password"
+    }
+  }
+
+
+  return (
+    <>
+      <motion.main className='d-flex'
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+      >
+        <div id='side-blue' className='d-flex flex-column justify-content-center align-items-center'>
+          <div className='text-light mb-5' id='bem-vindo-side-blue'>
+            <h3>Seja bem vindo ao Hibernum</h3>
+            <p>Preencha todos os <br /> dados corretamente</p>
+          </div>
+
+          <div>
+            <img src="./bg-login.jpg" width='551' alt="" height='420' />
+          </div>
+        </div>
+
+        <div id='form-login' className='d-flex justify-content-center align-items-center'>
+
+          <div>
+            <div id='logo-login' className='d-flex flex-column align-items-center'>
+              <Link to="/"><img src="logo-orig.png" width='90' alt="" /></Link>
+              <div className='text-center'>
+                <h2 className='mt-3'>Seja bem vindo</h2>
+                <p>Digite os dados para realizar o login</p>
+              </div>
             </div>
 
+            <form action="" className='mt-3' id="forms-login" onSubmit={handleSubmit(data =>{handleLogin(data)})}>
+              <div className='d-flex flex-column'>
+                <Input
+                  id="email"
+                  label="Email"
+                  type="text"
+                  name="email"
+                  placeholder=""
+                  validation={{ control }}
+                  error={errors.email}
+                />
+              </div>
+              <div className='d-flex flex-column'>
+                <Input
+                  id="senha"
+                  label="Senha"
+                  type="password"
+                  name="password"
+                  placeholder=""
+                  validation={{ control }}
+                  error={errors.password}
+                />
+              </div>
+              <div className='text-center'>
+              <span id='showErro' style={{color:'red', fontSize: '14px'}}></span>
+              </div>
 
-        </motion.div>
-    );
-};
 
-export default Login;
+              <div id='opcoes-login' className='d-flex align-items-center justify-content-between'>
+                <div>
+                  <input type="checkbox" name="mostrarSenha" id="mostrarSenha" onClick={Mostrarsenha} />
+                  <label htmlFor="mostrarSenha" className='p-2 nomeMostrar'>Mostrar senha</label>
+                </div>
+
+                <div id='esqueceu-senha'>
+                  <Link to="/recuperarSenha">Esqueceu senha?</Link>
+                </div>
+              </div>
+
+              <div id="botao-login" className='w-100 mt-2'>
+                <button className='rounded text-light' type='submit'><NavLink to ='/prestadorServicoAnuncio'>Entrar na conta</NavLink></button>
+              </div>
+            </form>
+
+            <div id='cadastro-login' className='text-center mt-4'>
+              <h6>Não tem login? <Link to="/cadastro/suasInformacoes" id='cadastre-se-login'>Cadastre-se</Link></h6>
+            </div>
+          </div>
+        </div>
+      </motion.main>
+
+
+    </>
+
+  )
+}
+
+export default Login

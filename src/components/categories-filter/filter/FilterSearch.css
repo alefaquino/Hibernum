@@ -1,0 +1,41 @@
+.caixa-pesquisa {
+    background-color: var(--color-principal);
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    height: 90px;
+    width: 200px;
+    color: white;
+    border-radius: 10px;
+    justify-content: center;
+}
+
+input.pesquisa {
+    border: 0px;
+    height: 30px;
+    width:100%;
+    font-size: 13px;
+    outline: none;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    padding-left: 10px;
+
+}
+
+.procurar-input {
+    display: flex;
+    align-items: center;
+    margin-top: 5px;
+
+}
+
+.lupa-filter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #03334A;
+    height: 30px;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+
+}

@@ -1,0 +1,70 @@
+#side-bar{
+    height: 100%;
+    width: 30%;
+    background-color: var(--color-principal);
+    height: 100vh;
+}
+
+.step-number{
+    border: 3px solid white;
+    margin-right: 15px;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 20px;
+
+}
+
+.step-info{
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.step-info-number{
+    font-weight: lighter;
+}
+
+.selected .step-number{
+    background-color: #ffffff;
+    color: #1d1d1d;
+    border: 0;
+    transition: all 600ms;
+}
+
+li{
+    list-style-type: none;
+    margin-top: 20px;
+    margin-left: 0.5px;
+}
+
+@media (max-width: 767.98px) {
+    #side-bar{
+        height: 100px;
+        width: 100%;
+        background-color: var(--color-principal);
+        flex-direction: row !important;
+    }
+
+    #logo-box img{
+        width: 60px;
+    }
+
+    #navegation-box{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 23px;
+    }
+    #navegation-box li{
+        margin: 0 !important;
+    }
+
+    .step-info{
+        display: none;
+    }
+}

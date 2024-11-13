@@ -1,32 +1,68 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import React from 'react';
-import Login from "./pages/login/Login";
-import Home from "./pages/inicio/home";
-import NavBar from "./components/Navbar/Navbar";
-import Carrinho from "./pages/carrinho/Carrinho";
-import './index.scss';
-import Cadastro from "./pages/cadastro/Cadastro";
-import Anamnese from "./pages/anamnese/Anamnes";
-import AnamneseLista from './pages/anamneseList/AnamneseLista';
+import Navigation from './components/navigation/Navigation';
+import { BrowserRouter, Switch, Route } from "react-router-dom";
+import Home from './pages/Home/Home';
+import Cadastro from './pages/Cadastro/Cadastro.jsx';
+import Login from './pages/Login/login';
+import ForgotPassword from './pages/ForgotPassword/ForgotPassword';
+import { AnimatePresence } from 'framer-motion';
+import PrestadorServicoAnuncio from './pages/prestadorServicoAnuncio/PrestadorServicoAnuncio';
+import { UserProvider } from '../context/userContext';
+import Profile from './pages/Profile/Profile';
+import Footer from './components/Footer/Footer';
 
 function App() {
-    return (
-        <div style={{ background: '#B3DDF2' }}>
-            <BrowserRouter>
-                <Routes>
-                    <Route path="/login" element={<Login />} />
-                    <Route path="/cadastro" element={<Cadastro />} />
-                    <Route path="/carrinho" element={<Carrinho />} />
-                    <Route path="/" element={<NavBar cliente={true} />}>
-                        <Route index element={<Home />} />
-                        <Route path="home" element={<Home />} />
-                        <Route path="anamnese" element={<Anamnese />} />
-                        <Route path="anamneseLista" element={<AnamneseLista />} />
-                    </Route>
-                </Routes>
-            </BrowserRouter>
-        </div>
-    );
+
+
+  return (
+    <>
+      <AnimatePresence mode='wait'>
+        <UserProvider>
+          <BrowserRouter>
+
+            <div>
+              <Route path="/cadastro">
+                <Cadastro />
+              </Route>
+
+              <Route path={["/", "/users/:id", "/profile"]} exact>
+                <Navigation />
+                
+              </Route>
+
+              <Switch>
+
+                <Route path="/profile">
+                  <Profile />
+                </Route>
+                <Route path="/login" exact>
+                  <Login />
+                </Route>
+
+                <Route path="/prestadorServicoAnuncio" exact>
+                  <PrestadorServicoAnuncio />
+                </Route>
+
+                <Route path="/recuperarSenha" exact>
+                  <ForgotPassword />
+                </Route>
+
+                <Route path="/" exact>
+                  <Home />
+                </Route>
+
+              </Switch>
+              <Route
+                path={["/", "/users/:id", "/profile", "/recuperarSenha"]}
+                exact
+              >
+                <Footer />
+              </Route>
+            </div>
+          </BrowserRouter>
+        </UserProvider>
+      </AnimatePresence>
+    </>
+  )
 }
 
-export default App;
+export default App

@@ -1,0 +1,84 @@
+.card {
+    width: 240px;
+    height: 440px;
+    background-color: white;
+    border: 0;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 13px;
+    box-shadow: 3px 3px 5px rgba(145, 145, 145, 0.274);
+}
+
+.imagem {
+    background-position: center;
+    background-size: cover;
+    height: 150px;
+    border-radius: 10px 10px 0 0;
+    
+}
+
+#star {
+    background-color: #03334A;
+    border-radius: 10px;
+    width: 60px;
+}
+
+#avaliation {
+    font-weight: bold;
+    color: white;
+}
+
+#avaliation-texto{
+    margin-left: 5px;
+    margin-top: 3px;
+}
+
+#Nome {
+    color: #03334A;
+    font-weight: bold;
+
+}
+
+#descricao-box {
+    font-size: small;
+}
+
+#descricao-box p {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+    overflow: hidden;
+    margin: 0;
+    text-overflow: ellipsis;
+}
+
+#services {
+    font-weight: bold;
+    color: #03334A;
+    font-size: 14px;
+    margin: 0 0 3px 0 !important;
+    padding: 0 !important;
+
+}
+
+#function {
+    font-weight: bold;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: medium;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+#botão {
+    border: 0;
+    border-radius: 0 0 2% 2%;
+    background-color: #29A8E3;
+    color: aliceblue;
+    font-weight: bold;
+    font-size: 20px;
+    width: 100%;
+    border-radius: 0 0 10px 10px;
+    height: 60px;
+}

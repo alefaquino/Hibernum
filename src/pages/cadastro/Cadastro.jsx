@@ -1,107 +1,81 @@
-import { motion } from "framer-motion";
-import Form from 'react-bootstrap/Form';
-import React from 'react';
-import { NavLink } from 'react-router-dom';
+import NavegationCadastro from '../../components/Cadastro-components/navegation-cadastro/NavegationCadastro';
+import { useRouteMatch, Route } from "react-router-dom";
+import './Cadastro.css'
+import SuasInformacoes from '../../components/Cadastro-components/SuasInformacoes/SuasInformacoes';
+import DadosPessoais from '../../components/Cadastro-components/dados-pessoais/DadosPessoais';
+import TipoCadastro from '../../components/Cadastro-components/tipo-cadastro/TipoCadastro';
+import AnuncioPage from '../../components/Cadastro-components/anuncioPage/anuncioPage';
+import React, { useEffect, useState} from 'react';
+import { motion } from 'framer-motion';
+
 
 const Cadastro = () => {
+    
+   const[suasInformacoesUser, setSuasInformacoesUser] = useState()
+   const[dadosPessoaisUser, setDadosPessoais] = useState()
+   const[dadosUser, setDadosUser] = useState()
+   const[isPrestadorServicoCadastro, setIsPrestadorServicoCadastro] = useState(false)
+   const[imageForm, setImageForm] = useState(new FormData())
+   const[prestadorServicoType, setPrestadorServicoType] = useState()
+
+    function salvarInformacoes(dados){
+        setSuasInformacoesUser(dados)
+    }
+
+    function salvarFoto(foto){
+        setImageForm(foto)
+    }
+
+    function SalvarInformacoesDadosPessoais(dadosPessoais){
+        setDadosPessoais(dadosPessoais)
+    }
+
+    function salvarDadosUser(userData){
+        setDadosUser(userData)
+    }
+
+    function salvarPrestadorServicoType(prestadorServicoTipo){
+        setPrestadorServicoType(prestadorServicoTipo)
+    }
+    
+
+    useEffect(()=>{
+        if(prestadorServicoType){
+            if(prestadorServicoType == "prestadorServico"){
+                setIsPrestadorServicoCadastro(true)          
+            }else if(prestadorServicoType == "cliente"){
+                setIsPrestadorServicoCadastro(false)
+            }
+        }
+    }, [dadosUser])
+    useEffect(() => {
+        // Aplicar a classe "no-scroll" quando o componente montar
+        document.body.classList.add('no-scroll');
+        return () => {
+            // Remover a classe "no-scroll" quando o componente desmontar
+            document.body.classList.remove('no-scroll');
+        };
+    }, []);
     return (
-        <motion.div className="login"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.4 }}
-        >
-            <div className="box_background"></div>
-            <div className="box_form">
-                <Form className="box_form_form">
-                    {/* Dados Pessoais */}
-                    <div className="row">
-                        <div className="col-md-6">
-                            <Form.Group className="mb-3" controlId="nome">
-                                <Form.Label>Nome</Form.Label>
-                                <Form.Control type="text" required />
-                            </Form.Group>
-                        </div>
-                        <div className="col-md-6">
-                            <Form.Group className="mb-3" controlId="telefone">
-                                <Form.Label>Telefone</Form.Label>
-                                <Form.Control
-                                    type="tel"
-                                    pattern="\d*"
-                                    required
-                                    placeholder="(XX) XXXXX-XXXX"
-                                />
-                            </Form.Group>
-                        </div>
-                    </div>
-
-                    <div className="row">
-                        <div className="col-md-6">
-                            <Form.Group className="mb-3" controlId="email">
-                                <Form.Label>E-mail</Form.Label>
-                                <Form.Control type="email" required />
-                            </Form.Group>
-                        </div>
-                        <div className="col-md-6">
-                            <Form.Group className="mb-3" controlId="confirmar_email">
-                                <Form.Label>Confirme seu E-mail</Form.Label>
-                                <Form.Control type="email" required />
-                            </Form.Group>
-                        </div>
-                    </div>
-
-                    {/* Dados de Acesso */}
-                    <div className="row">
-                        <div className="col-md-6">
-                            <Form.Group className="mb-3" controlId="senha">
-                                <Form.Label>Senha</Form.Label>
-                                <Form.Control type="password" required />
-                            </Form.Group>
-                        </div>
-                        <div className="col-md-6">
-                            <Form.Group className="mb-3" controlId="confirmar_senha">
-                                <Form.Label>Confirme sua Senha</Form.Label>
-                                <Form.Control type="password" required />
-                            </Form.Group>
-                        </div>
-                    </div>
-
-                    {/* Dados de Endereço */}
-                    <div className="row">
-                        <div className="col-md-6">
-                            <Form.Group className="mb-3" controlId="cep">
-                                <Form.Label>CEP</Form.Label>
-                                <Form.Control type="text" required />
-                            </Form.Group>
-                        </div>
-                        <div className="col-md-6">
-                            <Form.Group className="mb-3" controlId="rua">
-                                <Form.Label>Rua</Form.Label>
-                                <Form.Control type="text" required />
-                            </Form.Group>
-                        </div>
-                    </div>
-
-                    <div className="row">
-                        <div className="col-md-6">
-                            <Form.Group className="mb-3" controlId="numero">
-                                <Form.Label>Número</Form.Label>
-                                <Form.Control type="text" required />
-                            </Form.Group>
-                        </div>
-                        <div className="col-md-6">
-                            <Form.Group className="mb-3" controlId="cidade">
-                                <Form.Label>Cidade</Form.Label>
-                                <Form.Control type="text" required />
-                            </Form.Group>
-                        </div>
-                    </div>
-
-                    <button type="submit" className="box_form_form_button w-100">
-                        <NavLink to="/home" className="text-blue-500">Cadastre-se</NavLink>
-                    </button>
-                </Form>
-            </div>
-        </motion.div>
+        <>
+            <motion.div className='d-flex' id='cadastro-principal' style={{ overflowY: "hidden" }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}>
+                <NavegationCadastro prestadorServico={isPrestadorServicoCadastro}/>
+                <Route path="/cadastro/suasInformacoes" exact>
+                    <SuasInformacoes  onSave={salvarInformacoes} onSaveImage={salvarFoto}/>
+                </Route>
+                <Route path="/cadastro/dadosPessoais" exact>
+                    <DadosPessoais onSaveDadosPessoais={SalvarInformacoesDadosPessoais} />
+                </Route>
+                <Route path="/cadastro/tipoCadastro" exact>
+                    <TipoCadastro suasInformacoesDados={suasInformacoesUser} dadosPessoaisDados={dadosPessoaisUser} userDataEnv={salvarDadosUser} prestadorServicoDados={salvarPrestadorServicoType} imagemPerfil={imageForm}/>
+                </Route>
+                <Route path="/cadastro/anuncioPage" exact>
+                    <AnuncioPage prestadorServicoDados={dadosUser}/>
+                </Route>
+            </motion.div>
+        </>
     );
 }
 

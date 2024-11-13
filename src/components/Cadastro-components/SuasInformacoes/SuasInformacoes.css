@@ -1,0 +1,77 @@
+.principal-box-cadastro{
+    width: 65%;
+    height: 101vh;
+    overflow: auto;
+    margin: 0 auto;
+    padding: 25px 30px;
+}
+
+.principal-box-cadastro::-webkit-scrollbar {
+    width: 10px;          
+  }
+  
+  .principal-box-cadastro::-webkit-scrollbar-track {
+    background: rgba(190, 190, 190, 0.671);    
+  }
+  
+  .principal-box-cadastro::-webkit-scrollbar-thumb {
+    background-color: var(--color-principal);
+    border-radius: 10px;
+  }
+
+#placeholder-perfil{
+    cursor: pointer;
+    display: inline-block;
+    width: 90px;
+    height: 90px;
+    background: center no-repeat;
+    background-size: cover;   
+    border-radius: 10px;
+}
+.first-text-cadastro p , #first-text-cadastro h2{
+    margin: 0;
+    padding: 0;
+}
+
+#image-perfil{
+    display: none;
+}
+
+#text-placeholder-perfil{
+    margin-left: 15px;
+}
+
+#text-placeholder-perfil h6{
+    margin-bottom: 5px;
+    font-size: 15px;
+}
+
+#text-placeholder-perfil p{
+    margin: 0;
+    font-size: 14px;
+}
+.next-step{
+    background-color: var(--color-principal);
+    display: flex;
+    width: 150px;
+    height: 50px;
+    border-radius: 8px;
+    align-items: center;
+    justify-content: center;
+}
+#button-suasInfos{
+    border: 0;
+    background-color: var(--color-principal);
+    height: 50px;
+    font-weight: 600;
+    font-size: 18px;
+    transition: all 400ms;
+    width: 250px;
+}
+
+@media (max-width: 767.98px) {
+    .principal-box-cadastro{
+        width: 100% !important;
+        height: 100vh;
+    }
+}

@@ -17,8 +17,6 @@ function App() {
                     <Route path="/login" element={<Login />} />
                     <Route path="/cadastro" element={<Cadastro />} />
                     <Route path="/carrinho" element={<Carrinho />} />
-                    
-                    {/* Rotas com NavBar */}
                     <Route path="/" element={<NavBar cliente={true} />}>
                         <Route index element={<Home />} />
                         <Route path="home" element={<Home />} />
